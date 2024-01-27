@@ -13,6 +13,11 @@ public class CharacterStats : MonoBehaviour
 
     public Action Death;
 
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
+
     public virtual void changeHealth(int change)
     {
         currentHealth += change;

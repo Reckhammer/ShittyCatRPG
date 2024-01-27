@@ -12,6 +12,7 @@ public class AttackAction : CharacterAction
         target.PlayAnimation("Hurt");
         int damage = -1 * myCharacter.stats.power;
         target.stats.changeHealth(damage);
+        SoundFXManager.instance.PlaySoundFX(soundFX);
 
         BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} attacked {target.characterName} for {damage} damage");
         Debug.Log($"{myCharacter.characterName} attacked {target.characterName} for {damage}");
