@@ -33,7 +33,6 @@ public class BattleSystem : MonoBehaviour
     {
         menu.SetDialogueText("Battle Begins");
         SpawnCharacters();
-        SetUpCharacterHUDs();
 
         yield return new WaitForSeconds(2f);
 
@@ -46,6 +45,8 @@ public class BattleSystem : MonoBehaviour
         // Spawn Players
 
         // Spawn Enemies
+        
+        SetUpCharacterHUDs();
     }
 
     void SetUpCharacterHUDs()
@@ -56,7 +57,6 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         menu.SetDialogueText("Choose an action");
-
     }
 
     IEnumerator EnemyTurn()

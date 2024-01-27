@@ -16,9 +16,11 @@ public class CharacterStats : MonoBehaviour
     public virtual void changeHealth(int change)
     {
         currentHealth += change;
+        Debug.Log($"{this.name} health changed from {currentHealth + (-1 * change)} to {currentHealth}");
 
         if (currentHealth <= 0)
         {
+            Debug.Log($"{this.name} has died");
             currentHealth = 0;
             Death.Invoke();
         }

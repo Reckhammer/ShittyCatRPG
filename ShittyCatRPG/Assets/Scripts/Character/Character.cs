@@ -8,5 +8,11 @@ public class Character : MonoBehaviour
     public CharacterStats stats;
     private List<CharacterAction> characterActions;
 
+    public Animator animator;
+
+    public void PlayAnimation(string animationName)
+    {
+        animator.SetTrigger(animationName);
+    }
 
 }

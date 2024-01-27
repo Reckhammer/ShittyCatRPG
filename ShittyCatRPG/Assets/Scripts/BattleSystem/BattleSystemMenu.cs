@@ -6,7 +6,19 @@ using TMPro;
 
 public class BattleSystemMenu : MonoBehaviour
 {
+    public static BattleSystemMenu instance;
     public TextMeshPro dialogueText;
+
+    public void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
+
+    public void OnDestroy()
+    {
+        instance = null;
+    }
 
     public void SetDialogueText(string text)
     {
