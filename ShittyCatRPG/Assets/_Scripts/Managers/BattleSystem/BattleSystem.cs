@@ -197,17 +197,6 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         playerTurnComplete = true;
-
-        if (isAllEnemiesDead())
-        {
-            currentState = BattleState.WON;
-            EndBattle();
-        }
-        else
-        {
-            currentState = BattleState.ENEMYTURN;
-            EnemyTurn();
-        }
     }
 
     IEnumerator PlayerSpecial()
@@ -220,17 +209,6 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         playerTurnComplete = true;
-
-        if (isAllEnemiesDead())
-        {
-            currentState = BattleState.WON;
-            EndBattle();
-        }
-        else
-        {
-            currentState = BattleState.ENEMYTURN;
-            EnemyTurn();
-        }
     }
 
     void EnemyTurn()

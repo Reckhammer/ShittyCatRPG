@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: characterName
       value: Warrior Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 2672068449987482153, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: armor
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672068449987482153, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: power
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2672068449987482153, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7374861265939371885, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.01226
@@ -54,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7706013978868530752, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
       propertyPath: m_Name
-      value: PlayerWarriorCat Variant
+      value: PlayerWarriorCat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

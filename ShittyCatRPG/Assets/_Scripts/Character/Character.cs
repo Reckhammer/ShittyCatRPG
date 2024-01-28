@@ -22,6 +22,11 @@ public class Character : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        stats.Death += Die;
+    }
+
     public void PlayAnimation(string animationName)
     {
         if (animator == null || animator.runtimeAnimatorController == null)
@@ -30,4 +35,8 @@ public class Character : MonoBehaviour
         animator.SetTrigger(animationName);
     }
 
+    public void Die()
+    {
+        PlayAnimation("Death");
+    }
 }

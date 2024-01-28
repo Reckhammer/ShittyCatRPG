@@ -19,6 +19,12 @@ public class AttackAction : CharacterAction
 
         yield return new WaitForSeconds(actionTime);
 
+        if (target.stats.isDead)
+        {
+            BattleSystemMenu.instance.SetDialogueText($"{target.characterName} has died.");
+            yield return new WaitForSeconds(actionTime);
+        }
+
         CleanUpAction();
     }
 }
