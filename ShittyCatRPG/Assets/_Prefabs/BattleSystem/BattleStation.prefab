@@ -112,7 +112,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5881191688180253078}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hudPosition: {fileID: 8311877022906993173}
   characterPosition: {fileID: 3770776249482291976}
+  character: {fileID: 0}
 --- !u!1001 &2828167225972090541
 PrefabInstance:
   m_ObjectHideFlags: 0

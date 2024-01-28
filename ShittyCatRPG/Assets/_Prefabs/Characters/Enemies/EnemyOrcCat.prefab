@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 28d2e82094eba0449a135e7dee17bb01, type: 3}
+    - target: {fileID: 836629785516125776, guid: 1f529b6efa3b2e64181ab1f7dded6d1d, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2780260958176487642, guid: 1f529b6efa3b2e64181ab1f7dded6d1d, type: 3}
       propertyPath: characterName
       value: Orc Cat
