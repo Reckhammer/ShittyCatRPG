@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: characterName
       value: Warrior Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 584393582765692067, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: sprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 584393582765692067, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c05d6fb3c3179e4cb09d137adb9b20b, type: 3}
+    - target: {fileID: 584393582765692067, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 82571c298f591e7419821d0f98e9d250, type: 3}
+    - target: {fileID: 584393582765692067, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 41ccf1299b2e80a44971186904f1e7b3, type: 3}
     - target: {fileID: 2672068449987482153, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
       propertyPath: armor
       value: 4
