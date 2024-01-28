@@ -17,4 +17,64 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/WorldMap.unity
     guid: c99e9536f4125794ea07e00fa06b5bcd
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Beach_BreadCat.unity
+    guid: d27798f9bec822d4e8bdecfbc79960a0
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Beach_Egyptian.unity
+    guid: 8d2facca4c40c2941b511eca8253e447
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Beach_Purrate.unity
+    guid: 61e5740fb10c1cb43b23f09f5be1a083
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Beach_Vampire.unity
+    guid: 6cf976db38091404b804f7cd3c301326
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_ElCyberGato.unity
+    guid: be3acfeb6846ff2499ddaf3000f85850
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Final.unity
+    guid: 9d88827fe0acd6c40b90a9b4d87396b9
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_GreatFloppa.unity
+    guid: 854c1ecdd84233049a9cd7dc64ba7403
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_KingBingus.unity
+    guid: 464142a0e004306408b07fb4624e8245
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Mountain_Ice.unity
+    guid: 73635d43ece81e045864ad82a900eb5c
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Mountain_Orc.unity
+    guid: 229a6a03d7bcb36408e043969d405724
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Mountain_Vikitten.unity
+    guid: 5e0bdf4c2b1674d40bad7974155abb8a
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Mountain_Witch.unity
+    guid: ebe39c85ae48c6b41bea03152e851bdf
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Plains_Goblin.unity
+    guid: 25689f7f2403a214a8343d87dffc0448
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Plains_Sameow.unity
+    guid: 239ed61d4f51b434aafdc7cc3290a03d
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Plains_Slime.unity
+    guid: 80289c83127468c4b8c97845b6ade120
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Plains_WilOWisp.unity
+    guid: 20b89db0162f7a94fafcb54081624c4c
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Street_Baller.unity
+    guid: aab17196c98cf544ea5dff39f04ae7b5
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Street_Chad.unity
+    guid: 367a63f359b396345880d938c238d3aa
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Street_Construction.unity
+    guid: f177f579ea442604f80e27919f1950d7
+  - enabled: 1
+    path: Assets/_Scenes/BattleScene_Street_Void.unity
+    guid: 182773b8e0e8cca4bb887128e153a1e3
   m_configObjects: {}

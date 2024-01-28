@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public enum BattleState
 {
     START,
@@ -279,9 +281,17 @@ public class BattleSystem : MonoBehaviour
         if (reward != null)
             reward.GiveReward();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
 
         // Change scenes
+        if (!SceneManager.GetActiveScene().name.Equals("BattleScene_Final"))
+        {
+            SceneManager.LoadScene("WorldMap");
+        }
+        else
+        {
+            SceneManager.LoadScene("Victory");
+        }    
     }
 
     IEnumerator LoseRoutine()
@@ -289,9 +299,10 @@ public class BattleSystem : MonoBehaviour
         BattleSystemMenu.instance.SetDialogueText("Players have been defeated");
         Debug.Log("Players have been defeated");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
 
         // change to lose scene
+        SceneManager.LoadScene("GameOver");
     }
 
     bool isAllPlayersDead()
