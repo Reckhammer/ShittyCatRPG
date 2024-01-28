@@ -202,7 +202,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PlayerSpecial()
     {
         // enemy take damage
-        yield return StartCoroutine(currentPlayerAttackAction.ActionSequence());
+        yield return StartCoroutine(currentPlayerSpecialAction.ActionSequence());
 
         currentPlayerAttackAction = null;
         currentPlayerSpecialAction = null;

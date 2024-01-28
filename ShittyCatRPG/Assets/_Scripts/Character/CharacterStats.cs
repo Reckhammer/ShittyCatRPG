@@ -10,6 +10,7 @@ public class CharacterStats : MonoBehaviour
     public int speed = 1;
 
     public int currentHealth;
+    public int healthPercentage =>  (int) (currentHealth / maxHealth);
     public event Action HealthChange;
 
     public event Action Death;
@@ -24,6 +25,11 @@ public class CharacterStats : MonoBehaviour
     {
         currentHealth += change;
         Debug.Log($"{this.name} health changed from {currentHealth + (-1 * change)} to {currentHealth}");
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
 
         if (currentHealth <= 0)
         {

@@ -21,8 +21,11 @@ public class CharacterAction : MonoBehaviour
         yield return null;
     }
 
-    public IEnumerator SelectTargetSequence()
+    public IEnumerator SelectTargetSequence(string msg = null)
     {
+        if (msg == null || msg.Length == 0)
+            msg = "Select a Target";
+
         BattleSystemMenu.instance.SetDialogueText("Select a Target");
         Debug.Log("Select a Target");
         TargetingManager.instance.activelySearchingForTarget = true;

@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.TextCore.Text;
 
-public class EnemyAttackAction : AttackAction
+public class DeadEyeSpecialAction : SpecialAction
 {
     public override IEnumerator ActionSequence()
     {
-        SetTarget();
+        yield return StartCoroutine(SelectTargetSequence());
 
         myCharacter.PlayAnimation("Attack");
         target.PlayAnimation("Hurt");
-        int damage = -1 * myCharacter.stats.power;
+        int damage = -1 * myCharacter.stats.power * 2;
         target.stats.changeHealth(damage);
         SoundFXManager.instance.PlaySoundFX(soundFX);
 
-        BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} attacked {target.characterName} for {-1 * damage} damage");
+        BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} deadeyed {target.characterName} for {-1 * damage} damage");
         Debug.Log($"{myCharacter.characterName} attacked {target.characterName} for {damage}");
 
         yield return new WaitForSeconds(actionTime);
@@ -26,20 +28,5 @@ public class EnemyAttackAction : AttackAction
         }
 
         CleanUpAction();
-    }
-
-    public void SetTarget()
-    {
-        target = BattleSystem.instance.players[0];
-        foreach (Character player in BattleSystem.instance.players)
-        {
-            if (!player.stats.isDead)
-            {
-                if (player.stats.healthPercentage < target.stats.healthPercentage)
-                {
-                    target = player;
-                }
-            }
-        }
     }
 }

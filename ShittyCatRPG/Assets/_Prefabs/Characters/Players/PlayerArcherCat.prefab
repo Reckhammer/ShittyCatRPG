@@ -91,5 +91,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7706013978868530752, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 5089226820714150673}
   m_SourcePrefab: {fileID: 100100000, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+--- !u!1 &1782613551373603176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7706013978868530752, guid: 22be3dd1add6ab342a3e86690671c45e, type: 3}
+  m_PrefabInstance: {fileID: 8236062779934306088}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5089226820714150673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782613551373603176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49a23069b165d64e9dc0b710a0a5a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionTime: 2
+  animationName: Attack
+  soundFX: {fileID: 0}
