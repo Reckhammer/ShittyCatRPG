@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1143444756496288151}
   - component: {fileID: 14275053056136000}
   - component: {fileID: 3966324539086762592}
+  - component: {fileID: 4643068791696654747}
   m_Layer: 5
   m_Name: TestBattleHUD
   m_TagString: Untagged
@@ -72,7 +73,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -6.5, y: 2.33}
+  m_AnchoredPosition: {x: -6.5, y: 2.3299866}
   m_SizeDelta: {x: 1337, y: 774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1143444756496288151
@@ -138,6 +139,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4643068791696654747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690291804455100430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b61bc4090b047414783fb7f07a69a7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: {fileID: 861636578891888562}
+  hpSlider: {fileID: 6309545103210430466}
 --- !u!1 &2760883309597189400
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +186,7 @@ RectTransform:
   m_Father: {fileID: 1436728747080407193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

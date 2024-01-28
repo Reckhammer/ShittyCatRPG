@@ -7,7 +7,7 @@ using TMPro;
 public class BattleSystemMenu : MonoBehaviour
 {
     public static BattleSystemMenu instance;
-    public TextMeshPro dialogueText;
+    public TextMeshProUGUI dialogueText;
 
     public void Awake()
     {

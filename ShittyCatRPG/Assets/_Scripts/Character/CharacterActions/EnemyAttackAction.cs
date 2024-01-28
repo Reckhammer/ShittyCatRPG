@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackAction : CharacterAction
+public class EnemyAttackAction : CharacterAction
 {
     public override IEnumerator ActionSequence()
     {
-        yield return StartCoroutine(SelectTargetSequence());
+        SetTarget();
 
         myCharacter.PlayAnimation("Attack");
         target.PlayAnimation("Hurt");
@@ -20,5 +20,20 @@ public class AttackAction : CharacterAction
         yield return new WaitForSeconds(actionTime);
 
         CleanUpAction();
+    }
+
+    public void SetTarget()
+    {
+        target = BattleSystem.instance.players[0];
+        foreach (Character player in BattleSystem.instance.players)
+        {
+            if (!player.stats.isDead)
+            {
+                if (player.stats.currentHealth < target.stats.currentHealth)
+                {
+                    target = player;
+                }
+            }
+        }
     }
 }

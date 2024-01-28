@@ -7,6 +7,7 @@ public class CharacterAction : MonoBehaviour
     protected Character myCharacter;
     protected Character target;
 
+    public float actionTime = 2f;
     public string animationName = "DEFAULT";
     public AudioClip soundFX;
 
@@ -15,19 +16,15 @@ public class CharacterAction : MonoBehaviour
         myCharacter = GetComponent<Character>();
     }
 
-    public Coroutine StartActionSequence(Character target)
-    {
-        return StartCoroutine(ActionSequence(target));
-    }
-
-    public virtual IEnumerator ActionSequence(Character target)
+    public virtual IEnumerator ActionSequence()
     {
         yield return null;
     }
 
     public IEnumerator SelectTargetSequence()
     {
-        BattleSystemMenu.instance.SetDialogueText("Select a Target");
+        //BattleSystemMenu.instance.SetDialogueText("Select a Target");
+        Debug.Log("Select a Target");
         TargetingManager.instance.actionRequestingTarget = this;
 
         // Wait til the enemy location button is picked

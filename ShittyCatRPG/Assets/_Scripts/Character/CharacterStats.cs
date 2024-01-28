@@ -10,6 +10,7 @@ public class CharacterStats : MonoBehaviour
     public int speed = 1;
 
     public int currentHealth;
+    public Action HealthChange;
 
     public Action Death;
     public bool isDead = false;
@@ -31,6 +32,8 @@ public class CharacterStats : MonoBehaviour
             isDead = true;
             Death.Invoke();
         }
+
+        HealthChange.Invoke();
     }
 
 

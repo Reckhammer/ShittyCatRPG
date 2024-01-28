@@ -6,7 +6,7 @@ using TMPro;
 
 public class BattleHUD : MonoBehaviour
 {
-    public TextMeshPro nameText;
+    public TextMeshProUGUI nameText;
     public Slider hpSlider;
 
     Character character;
@@ -17,10 +17,17 @@ public class BattleHUD : MonoBehaviour
         nameText.text = character.characterName;
         hpSlider.maxValue = character.stats.maxHealth;
         hpSlider.value = character.stats.currentHealth;
+
+        character.stats.HealthChange += characterHealthChange;
     }
 
     public void SetHP(int currAmt)
     {
         hpSlider.value = currAmt;
+    }
+
+    private void characterHealthChange()
+    {
+        SetHP(character.stats.currentHealth);
     }
 }
