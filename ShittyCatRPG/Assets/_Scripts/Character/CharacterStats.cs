@@ -12,6 +12,7 @@ public class CharacterStats : MonoBehaviour
     public int currentHealth;
 
     public Action Death;
+    public bool isDead = false;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class CharacterStats : MonoBehaviour
         {
             Debug.Log($"{this.name} has died");
             currentHealth = 0;
+            isDead = true;
             Death.Invoke();
         }
     }
