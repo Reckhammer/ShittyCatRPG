@@ -6,6 +6,7 @@ public class TargetingManager : MonoBehaviour
 {
     public static TargetingManager instance;
     public CharacterAction actionRequestingTarget;
+    public bool activelySearchingForTarget = false;
 
     private void Awake()
     {
@@ -26,6 +27,9 @@ public class TargetingManager : MonoBehaviour
 
     public void SetTarget(Character target)
     {
+        if (!activelySearchingForTarget)
+            return;
+
         if (actionRequestingTarget == null)
         {
             Debug.LogError("Trying to Set Target for null action");
@@ -35,5 +39,6 @@ public class TargetingManager : MonoBehaviour
         Debug.Log($"{actionRequestingTarget.name}:{actionRequestingTarget.GetType()}'s target to {target.name}");
         actionRequestingTarget.SetTarget(target);
         actionRequestingTarget = null;
+        activelySearchingForTarget = false;
     }
 }

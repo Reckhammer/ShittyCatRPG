@@ -14,7 +14,7 @@ public class AttackAction : CharacterAction
         target.stats.changeHealth(damage);
         SoundFXManager.instance.PlaySoundFX(soundFX);
 
-        //BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} attacked {target.characterName} for {damage} damage");
+        BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} attacked {target.characterName} for {-1 * damage} damage");
         Debug.Log($"{myCharacter.characterName} attacked {target.characterName} for {damage}");
 
         yield return new WaitForSeconds(actionTime);

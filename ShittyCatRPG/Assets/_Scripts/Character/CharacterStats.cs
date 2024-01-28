@@ -10,9 +10,9 @@ public class CharacterStats : MonoBehaviour
     public int speed = 1;
 
     public int currentHealth;
-    public Action HealthChange;
+    public event Action HealthChange;
 
-    public Action Death;
+    public event Action Death;
     public bool isDead = false;
 
     private void Start()
@@ -30,10 +30,10 @@ public class CharacterStats : MonoBehaviour
             Debug.Log($"{this.name} has died");
             currentHealth = 0;
             isDead = true;
-            Death.Invoke();
+            Death?.Invoke();
         }
 
-        HealthChange.Invoke();
+        HealthChange?.Invoke();
     }
 
 

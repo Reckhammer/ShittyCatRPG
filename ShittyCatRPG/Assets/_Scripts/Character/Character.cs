@@ -8,8 +8,8 @@ public class Character : MonoBehaviour
     public CharacterStats stats;
     //private CharacterAction[] characterActions;
 
-    private AttackAction attackAction;
-    private SpecialAction specialAction;
+    public AttackAction attackAction;
+    public SpecialAction specialAction;
 
     public Animator animator;
 
@@ -24,6 +24,9 @@ public class Character : MonoBehaviour
 
     public void PlayAnimation(string animationName)
     {
+        if (animator == null || animator.runtimeAnimatorController == null)
+            return;
+
         animator.SetTrigger(animationName);
     }
 

@@ -14,6 +14,7 @@ public class BattleSystem : MonoBehaviour
 {
     public static BattleSystem instance;
     private BattleState currentState;
+    public BattleReward reward;
 
     public Character[] players;
     public Character[] enemies;
@@ -25,7 +26,9 @@ public class BattleSystem : MonoBehaviour
 
     public AttackAction currentPlayerAttackAction;
     public SpecialAction currentPlayerSpecialAction;
-    public EnemyAttackAction currentEnemyAttackAction;
+    public AttackAction currentEnemyAttackAction;
+
+    private bool playerTurnComplete = false;
 
     private void Awake()
     {
@@ -47,7 +50,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetUpBattle()
     {
-        //BattleSystemMenu.instance.SetDialogueText("Battle Begins");
+        BattleSystemMenu.instance.SetDialogueText("The Battle Begins");
         Debug.Log("Battle Begins");
         SpawnCharacters();
 
@@ -113,13 +116,61 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
-        //BattleSystemMenu.instance.SetDialogueText("Choose an action");
-        Debug.Log("Choose an action");
+        BattleSystemMenu.instance.SetDialogueText("Players Turn");
+        Debug.Log("Player's Turn");
+
+        StartCoroutine(PlayerTeamTurnRoutine());
+    }
+
+    IEnumerator PlayerTeamTurnRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        foreach (Character player in players)
+        {
+            if (!player.stats.isDead)
+            {
+                BattleSystemMenu.instance.SetDialogueText($"{player.characterName} chose an action.");
+                Debug.Log($"{player.characterName} chose an action.");
+
+                SetPlayerActions(player.attackAction, player.specialAction);
+
+                yield return StartCoroutine(PlayerTurnRoutine());
+
+                SetPlayerActions(null, null);
+
+                if (isAllEnemiesDead())
+                {
+                    currentState = BattleState.WON;
+                    EndBattle();
+                    yield break;
+                }
+
+            }
+        }
+
+        currentState = BattleState.ENEMYTURN;
+        EnemyTurn();
+    }
+
+    IEnumerator PlayerTurnRoutine()
+    {
+        while (!playerTurnComplete)
+        {
+            yield return null;
+        }
+
+        playerTurnComplete = false;
+
+        yield return new WaitForSeconds(2f);
     }
 
     public void OnAttackButton()
     {
         if (currentState != BattleState.PLAYERTURN)
+            return;
+
+        if (currentPlayerAttackAction == null)
             return;
 
         StartCoroutine(PlayerAttack());
@@ -130,6 +181,9 @@ public class BattleSystem : MonoBehaviour
         if (currentState != BattleState.PLAYERTURN)
             return;
 
+        if (currentPlayerSpecialAction == null)
+            return;
+
         StartCoroutine(PlayerSpecial());
     }
 
@@ -138,7 +192,11 @@ public class BattleSystem : MonoBehaviour
         // enemy take damage
         yield return StartCoroutine(currentPlayerAttackAction.ActionSequence());
 
+        currentPlayerAttackAction = null;
+        currentPlayerSpecialAction = null;
+
         yield return new WaitForSeconds(2f);
+        playerTurnComplete = true;
 
         if (isAllEnemiesDead())
         {
@@ -157,7 +215,11 @@ public class BattleSystem : MonoBehaviour
         // enemy take damage
         yield return StartCoroutine(currentPlayerAttackAction.ActionSequence());
 
+        currentPlayerAttackAction = null;
+        currentPlayerSpecialAction = null;
+
         yield return new WaitForSeconds(2f);
+        playerTurnComplete = true;
 
         if (isAllEnemiesDead())
         {
@@ -173,10 +235,36 @@ public class BattleSystem : MonoBehaviour
 
     void EnemyTurn()
     {
-        //BattleSystemMenu.instance.SetDialogueText("Opponents are attacking");
+        BattleSystemMenu.instance.SetDialogueText("Opponents are attacking");
         Debug.Log("Opponents are attacking");
 
-        StartCoroutine(EnemyTurnRoutine());
+        StartCoroutine(EnemyTeamTurnRoutine());
+    }
+
+    IEnumerator EnemyTeamTurnRoutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        foreach(Character enemy in enemies)
+        {
+            if (!enemy.stats.isDead)
+            {
+                currentEnemyAttackAction = enemy.attackAction;
+                yield return StartCoroutine(EnemyTurnRoutine());
+                currentEnemyAttackAction = null;
+
+                if (isAllPlayersDead())
+                {
+                    currentState = BattleState.LOST;
+                    EndBattle();
+                    yield break;
+                }
+                
+            }
+        }
+        
+        currentState = BattleState.PLAYERTURN;
+        PlayerTurn();
     }
 
     IEnumerator EnemyTurnRoutine()
@@ -184,30 +272,48 @@ public class BattleSystem : MonoBehaviour
         // enemy take damage
         yield return StartCoroutine(currentEnemyAttackAction.ActionSequence());
 
-        if (isAllPlayersDead())
-        {
-            currentState = BattleState.LOST;
-            EndBattle();
-        }
-        else
-        {
-            currentState = BattleState.PLAYERTURN;
-            PlayerTurn();
-        }
+        yield return new WaitForSeconds(2f);
     }
 
     void EndBattle()
     {
+        StopAllCoroutines();
+
         if (currentState == BattleState.WON)
         {
             // do win stuff
-            Debug.Log("The Players won the battle");
+            StartCoroutine(WinRoutine());
         }
         else
         {
             // Go to lose screen
-            Debug.Log("The Players lost the battle");
+            StartCoroutine(LoseRoutine());
         }
+    }
+
+    IEnumerator WinRoutine()
+    {
+        BattleSystemMenu.instance.SetDialogueText("Players have won the Battle!");
+        Debug.Log("The Players won the battle");
+
+        yield return new WaitForSeconds(2f);
+
+        if (reward != null)
+            reward.GiveReward();
+
+        yield return new WaitForSeconds(2f);
+
+        // Change scenes
+    }
+
+    IEnumerator LoseRoutine()
+    {
+        BattleSystemMenu.instance.SetDialogueText("Players have been defeated");
+        Debug.Log("Players have been defeated");
+
+        yield return new WaitForSeconds(2f);
+
+        // change to lose scene
     }
 
     bool isAllPlayersDead()
@@ -230,5 +336,11 @@ public class BattleSystem : MonoBehaviour
         }
 
         return true;
+    }
+
+    void SetPlayerActions(AttackAction attack, SpecialAction special)
+    {
+        currentPlayerAttackAction = attack;
+        currentPlayerSpecialAction = special;
     }
 }

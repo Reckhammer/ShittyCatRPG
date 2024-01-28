@@ -8,6 +8,8 @@ public class BattleSystemMenu : MonoBehaviour
 {
     public static BattleSystemMenu instance;
     public TextMeshProUGUI dialogueText;
+    public Button attackButton;
+    public Button specialButton;
 
     public void Awake()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackAction : CharacterAction
+public class EnemyAttackAction : AttackAction
 {
     public override IEnumerator ActionSequence()
     {
@@ -14,7 +14,7 @@ public class EnemyAttackAction : CharacterAction
         target.stats.changeHealth(damage);
         SoundFXManager.instance.PlaySoundFX(soundFX);
 
-        //BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} attacked {target.characterName} for {damage} damage");
+        BattleSystemMenu.instance.SetDialogueText($"{myCharacter.characterName} attacked {target.characterName} for {-1 * damage} damage");
         Debug.Log($"{myCharacter.characterName} attacked {target.characterName} for {damage}");
 
         yield return new WaitForSeconds(actionTime);

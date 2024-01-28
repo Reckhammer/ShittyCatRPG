@@ -23,12 +23,13 @@ public class CharacterAction : MonoBehaviour
 
     public IEnumerator SelectTargetSequence()
     {
-        //BattleSystemMenu.instance.SetDialogueText("Select a Target");
+        BattleSystemMenu.instance.SetDialogueText("Select a Target");
         Debug.Log("Select a Target");
+        TargetingManager.instance.activelySearchingForTarget = true;
         TargetingManager.instance.actionRequestingTarget = this;
 
         // Wait til the enemy location button is picked
-        while (target = null)
+        while (target == null)
             yield return null;
     }
 
