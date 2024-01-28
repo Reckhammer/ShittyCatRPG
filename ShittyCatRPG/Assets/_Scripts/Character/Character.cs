@@ -6,9 +6,16 @@ public class Character : MonoBehaviour
 {
     public string characterName = "TEMP";
     public CharacterStats stats;
-    private List<CharacterAction> characterActions;
+    private CharacterAction[] characterActions;
 
     public Animator animator;
+
+    private void Awake()
+    {
+        stats = GetComponent<CharacterStats>();
+        characterActions = GetComponents<CharacterAction>();
+        animator = GetComponent<Animator>();
+    }
 
     public void PlayAnimation(string animationName)
     {
