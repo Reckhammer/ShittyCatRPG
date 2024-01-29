@@ -19,7 +19,7 @@ public class MapEntryPoint : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider2D collision)
+    private void OnTriggerStay(Collider collision)
     {
         if (!isRandomEncounter)
         {

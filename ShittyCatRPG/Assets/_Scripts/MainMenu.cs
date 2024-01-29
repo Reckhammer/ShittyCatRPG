@@ -7,6 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     public void OnStartButtonClicked()
     {
+        SceneManager.LoadScene("IntroVideo");
+    }
+
+    public void OnVideoSkipButtonClicked()
+    {
         SceneManager.LoadScene("WorldMap");
     }
 
